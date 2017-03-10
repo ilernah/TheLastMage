@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class MovingObject : MonoBehaviour {
 
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private bool isCanMove = true;
 
+    private bool isCanMove = true;
     private Vector2 destinationVector;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    protected virtual void Start () {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        int inputX = (int)Input.GetAxisRaw("Horizontal");
-        int inputY = (int)Input.GetAxisRaw("Vertical");
-
+    }
+		
+	protected void Move (int inputX, int inputY) {
         if (inputX != 0)
         {
             inputY = 0;
